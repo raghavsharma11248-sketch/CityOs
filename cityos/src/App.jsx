@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { IssuesProvider } from './context/IssuesContext';
+import { ParkingProvider } from './context/ParkingContext';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Sidebar from './components/layout/Sidebar';
 import { useState, useEffect } from 'react';
@@ -40,7 +41,8 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <IssuesProvider>
-          <Routes>
+          <ParkingProvider>
+            <Routes>
             {/* Public route */}
             <Route path="/login" element={<Login />} />
 
@@ -113,6 +115,7 @@ function App() {
             {/* Koi aur URL → Dashboard */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
+          </ParkingProvider>
         </IssuesProvider>
       </AuthProvider>
     </BrowserRouter>
